@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>TallerProduccion</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ tallerProduccion.id }}</td>
+            </tr>
+            <tr>
+                <th>Mes</th>
+                <td>{{ tallerProduccion.mes }}</td>
+            </tr>
+            <tr>
+                <th>Anno</th>
+                <td>{{ tallerProduccion.anno }}</td>
+            </tr>
+            <tr>
+                <th>Fecha</th>
+                <td>{% if tallerProduccion.fecha %}{{ tallerProduccion.fecha|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Plan</th>
+                <td>{{ tallerProduccion.plan }}</td>
+            </tr>
+            <tr>
+                <th>Preal</th>
+                <td>{{ tallerProduccion.preal }}</td>
+            </tr>
+            <tr>
+                <th>Salarioformador</th>
+                <td>{{ tallerProduccion.salarioformador }}</td>
+            </tr>
+            <tr>
+                <th>Relacionplan</th>
+                <td>{{ tallerProduccion.relacionplan }}</td>
+            </tr>
+            <tr>
+                <th>Relacionreal</th>
+                <td>{{ tallerProduccion.relacionreal }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('tallerproduccion_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('tallerproduccion_edit', { 'id': tallerProduccion.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

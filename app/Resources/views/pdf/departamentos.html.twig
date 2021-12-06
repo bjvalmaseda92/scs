@@ -1,0 +1,23 @@
+{% extends 'pdf/layout-pdf.html.twig' %}
+{% block title %}<h4>Departamentos</h4>{% endblock %}
+    {% block content %}
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Nombre del departamento - taller</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for departamento in departamentos %}
+                <tr>
+                    <td>{{ departamento }}</td>
+
+                </tr>
+            {% else %}
+                <tr>
+                    <td class="text-center text-danger">No hay departamentos para mostrar</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {%endblock %}

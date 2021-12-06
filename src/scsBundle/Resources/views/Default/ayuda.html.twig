@@ -1,0 +1,243 @@
+{% extends 'layout.html.twig' %}
+{% block inicio %}
+    <li class="active" xmlns="http://www.w3.org/1999/html">
+        <a href="{{ path('scs_homepage') }}"><i class="fa fa-home"></i> Inicio</a>
+    </li>
+{% endblock%}
+{% block content %}
+    <div class=WordSection1>
+
+        <h4 class="text-center"> Trabajo con el Sistema para la Certificación de Salarios en la UEB Confecciones Trébol de la provincia de Ciego de Ávila.</h4>
+
+
+        <p><b> Autenticarse</b></p>
+
+        <p class="text-justify">Para acceder al sistema informático es necesario autenticarse. </p>
+
+        <ol>
+            <li>Insertar nombre de usuario y contraseña en los campos correspondientes.</li>
+            <li>Hacer clic en el botón Acceder.</li>
+        </ol>
+
+            <img  src="{{ asset('bundles/scs/img/ayuda/image001.png') }}" class="img-responsive">
+
+        <p><strong>Interfaz principal</strong></p>
+
+        <p class="text-justify">
+            Luego de autenticado en el sistema este le permitirá acceder a
+            la interfaz principal del mismo compuesto por las siguientes partes.
+        </p>
+        <img width="100%"  src="{{ asset('bundles/scs/img/ayuda/image003.jpg') }}" class="img-responsive">
+
+<ol>
+    <li><b>Menú superior:</b> Posee los enlaces a la ayuda y a la información
+        acerca del usuario que está logueado en el sistema, al hacer clic sobre el
+        usuario podrá acceder a la página de editar la información del mismo o
+        desconectarse en caso de que desee salir de la aplicación.</li>
+    <li>
+        <b>Panel de acceso rápido:</b> Muestra información referente a las
+        entidades más importantes en el sistema y un enlace a la página principal de
+        cada una de estas entidades. Así como un enlace al módulo graficar salarios por
+        período.
+    </li>
+    <li>
+        <b>Menú principal:</b> Contiene los accesos directos a todos los
+        módulos de la aplicación, haciendo clic sobre los mismos se puede ir a las
+        páginas principales de cada entidad o al adicionar una nueva entidad.
+    </li>
+
+</ol>
+
+
+
+
+
+      <strong>Panel de administración</strong>
+
+        <p class="text-justify">
+            El panel de administración es aquel donde se muestran todas las
+            entidades de un mismo tipo, este panel es genérico por lo que las siguientes
+            partes se aplican a los módulos Categoría ocupacional, Escalas salariales,
+            Talleres, Departamentos, Trabajadores, Prenóminas, Relaciones de producción y
+            Fondo de salario base de cálculo.
+        </p>
+        <img width="100%" src="{{ asset('bundles/scs/img/ayuda/image005.jpg') }}" class="img-rounded">
+        <ol>
+            <li>
+                <b>Cantidad de elementos:</b> Se pueden seleccionar el número de entidades a mostrar por páginas.
+            </li>
+            <li>
+                <b>Barra de título:</b> Muestra el nombre de
+                cada elemento mostrado, haciendo clic sobre estos se puede ordenar el listado
+                de elementos de forma ascendente o descendente por el valor que le corresponde
+                a dicha columna.
+            </li>
+            <li>
+                <b>Información de las entidades:</b> En esta
+                área se muestra la información de las entidades registradas en el sistema.
+            </li>
+            <li>
+                <b>Informe en PDF:</b> Pulsando en este botón
+                el sistema genera un informe en formato PDF con el listado de todas las
+                entidades de ese tipo existentes en el sistema.
+            </li>
+            <li>
+                <b>Buscador:</b> Utilizado para filtrar el
+                listado de entidades por cualquier criterio de búsqueda.
+            </li>
+            <li>
+                <b>Panel de acciones:</b> Se muestran las
+                acciones disponibles en dependencia de cada entidad, estas acciones pueden ser:
+                <ul>
+                    <li>
+                        Editar
+                    </li>
+                    <li>
+                        Eliminar
+                    </li>
+                    <li>
+                        Ver
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <b>Paginado:</b> Permite avanzar por las
+                diferentes páginas de los registros mostrados.
+            </li>
+        </ol>
+
+        <strong>Adicionar una entidad</strong>
+
+
+
+        <p class="text-justify">Para adicionar una entidad es necesario dar clic en el menú
+            principal sobre la entidad, y se muestra un menú desplegable con la opción
+            Nueva entidad. </p>
+
+        <img  src="{{ asset('bundles/scs/img/ayuda/image006.png') }}" class="img-responsive">
+
+        <strong>Panel de adición</strong>
+
+             <p class="text-justify">El panel de adición es aquel que te permite adicionar una
+            entidad al sistema.</p>
+        <img  src="{{ asset('bundles/scs/img/ayuda/image007.png') }}" class="img-responsive">
+
+<ol>
+    <li>
+        <b>Área del formulario</b>: En esta área se
+        mostrarán todos los campos necesarios para la creación de una nueva entidad.
+    </li>
+    <li>
+        <b>Panel de botones</b>: En este panel se
+        muestran dos botones uno para crear la nueva entidad luego de que todos los
+        campos estén llenos y el otro para cancelar e ir a la página principal de la
+        entidad correspondiente.
+    </li>
+</ol>
+
+
+        <p class="text-justify">Al llenar todos los campos correspondientes y pulsar el botón
+            crear este creará la nueva entidad y le informará que fue añadido correctamente
+            mediante un cartel que saldrá en la parte superior de la página principal de la
+            entidad.</p>
+        <img  src="{{ asset('bundles/scs/img/ayuda/image009.png') }}" class="img-responsive">
+
+
+        <p class="text-justify">Pero si es introducida información errónea este formulario no
+            será enviado y se mostrará el campo del formulario con un mensaje informando el
+            tipo de error que esta posee.</p>
+        <img  src="{{ asset('bundles/scs/img/ayuda/image011.png') }}" class="img-responsive">
+
+        <strong>Panel de edición</strong>
+        <p class="text-justify">El panel de edición es muy similar al de adicionar cualquier
+            entidad, posee las mismas partes y el mismo funcionamiento, solo que los datos
+            de la entidad a modificar son mostrados en el formulario. </p>
+        <img  src="{{ asset('bundles/scs/img/ayuda/image013.png') }}" class="img-responsive">
+
+        <strong> Eliminar una entidad</strong>
+
+        <p class="text-justify">Para eliminar una entidad luego de hacer clic en el botón
+            eliminar del panel de acciones que se encuentra en área de administración de
+            cada entidad, se muestra un cartel pidiendo la confirmación para eliminar esta
+            entidad.</p>
+        <img  src="{{ asset('bundles/scs/img/ayuda/image015.png') }}" class="img-responsive">
+
+        <strong> Generar una Prenómina</strong>
+
+        <p class="text-justify">El proceso de generar una Prenómina cuenta con dos pasos.</p>
+
+        <p class="text-justify">Paso 1: </p>
+        <img  src="{{ asset('bundles/scs/img/ayuda/image017.png') }}" class="img-responsive">
+
+        <ol>
+            <li>
+                <b>Área del formulario</b>: En esta área se
+                mostrarán todos los campos necesarios para la creación de una nueva Prenómina.
+            </li>
+            <li>
+                <b>Panel de botones</b>: En este panel se
+                muestra el botón siguiente para continuar en la próxima página.
+            </li>
+        </ol>
+
+
+        <p class="text-justify">Paso 2:</p>
+        <img  src="{{ asset('bundles/scs/img/ayuda/image019.png') }}" class="img-responsive">
+        <ol>
+            <li>
+                <b>Área del formulario</b>: En esta área se
+                mostrarán todos los campos necesarios con los datos de los trabajadores para la
+                creación de una nueva Prenómina.
+            </li>
+            <li>
+                <b>Panel de botones</b>: En este panel se
+                muestra el botón Finalizar para generar la Prenómina.
+            </li>
+        </ol>
+
+        <p class="text-justify">Al llenar los campos
+            correspondientes y pulsar el botón finalizar este creará la nueva Prenómina y
+            le informará que fue generada correctamente mediante un cartel que saldrá en la
+            parte superior de la Prenómina en CUP.</p>
+        <img  src="{{ asset('bundles/scs/img/ayuda/image021.png') }}" class="img-responsive">
+
+        <ol>
+            <li>
+                <b>Exportar a PDF:</b> Pulsando en este botón
+                el sistema genera un informe en formato PDF con la Prenómina generada en CUP.
+            </li>
+            <li>
+                <b>Prenómina en CUC:</b> Es el vínculo a la
+                Prenómina en CUC, que contiene la vista similar a la de CUP.
+            </li>
+        </ol>
+
+        <strong>Graficar por período</strong>
+        <p class="text-justify">Para graficar por período es necesario dar clic en el menú
+            principal sobre Relaciones de producción, y se muestra un menú desplegable con
+            la opción graficar por período. </p>
+        <img  src="{{ asset('bundles/scs/img/ayuda/image023.png') }}" class="img-responsive">
+
+                <p class="text-justify">Una vez seleccionado la opción graficar por período se muestra
+            el siguiente panel de administración.</p>
+        <img  src="{{ asset('bundles/scs/img/ayuda/image025.png') }}" class="img-responsive">
+        <ol>
+            <li>
+                <b>Área del formulario</b>: En esta área se
+                mostrarán los campos necesarios para la creación de la gráfica.
+            </li>
+            <li>
+                <b>Panel de botones</b>: En este panel se
+                muestra el botón Graficar para generar la gráfica</p>
+            </li>
+        </ol>
+
+
+        <p class="text-justify">Una vez generada la gráfica este se muestra con la opción de
+            generar un documento en PDF, con la información aportada.</p>
+        <img  src="{{ asset('bundles/scs/img/ayuda/image027.png') }}" class="img-responsive">
+
+
+
+          </div>
+{% endblock %}

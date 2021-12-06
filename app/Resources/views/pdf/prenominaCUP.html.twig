@@ -1,0 +1,29 @@
+{% extends 'pdf/layout-pdf.html.twig' %}
+{% block title %}<h4>Prenómina CUP del {{ prenomina.taller }} {{ prenomina.mes__toString }} {{ prenomina.anno }}</h4>{% endblock %}
+    {% block content %}
+        <table class="table table-striped prenomina">
+            <thead>
+            <th>Trabajador</th>
+            <th>Salario devengado</th>
+            <th>Salario por resultado</th>
+            <th>Penalización</th>
+            <th>Índice de evaluación</th>
+            <th>Vacaciones</th>
+            <th>Total en CUP</th>
+            </thead>
+            <tbody>
+            {% for trabajador in prenomina.prenominaTrabajador %}
+                <tr>
+                    <td>{{ trabajador.trabajadores}}</td>
+                    <td>{{ trabajador.salariodevengado | number_format(2,'.')}}</td>
+                    <td>{{ trabajador.salarioresultado | number_format(2,'.')}}</td>
+                    <td>{{ trabajador.penalizacion | number_format(2,'.')}}</td>
+                    <td>{{ trabajador.indiceevaluacion | number_format(2,'.')}}</td>
+                    <td>{{ trabajador.vacaciones | number_format(2,'.')}}</td>
+                    <td>{{ trabajador.totalcobrarcup | number_format(2,'.')}}</td>
+                </tr>
+            {% endfor %}
+
+            </tbody>
+        </table>
+    {%endblock %}

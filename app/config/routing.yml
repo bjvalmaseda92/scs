@@ -1,0 +1,5 @@
+scs:
+    resource: "@scsBundle/Resources/config/routing.yml"
+    prefix:   /
+
+

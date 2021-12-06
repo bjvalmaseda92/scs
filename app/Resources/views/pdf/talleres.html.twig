@@ -1,0 +1,23 @@
+{% extends 'pdf/layout-pdf.html.twig' %}
+{% block title %}<h4>Talleres</h4>{% endblock %}
+    {% block content %}
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Nombre del taller</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for taller in talleres %}
+                <tr>
+                    <td>{{ taller.nombre }}</td>
+
+                </tr>
+            {% else %}
+                <tr>
+                    <td class="text-center text-danger">No hay talleres para mostrar</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {%endblock %}

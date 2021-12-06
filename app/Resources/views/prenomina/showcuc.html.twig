@@ -1,0 +1,47 @@
+{% extends 'layout.html.twig' %}
+{% block title %}Prenómina CUC del {{ prenomina.taller }} {{ prenomina.mes__toString }} {{ prenomina.anno }} - Sistema de Certificación de Salarios{% endblock %}
+{% block css %}
+    <link href="{{ asset('bundles/scs/plugins/spinner/bootstrap-spinner.css') }}" rel="stylesheet">
+{% endblock %}
+{% block prenomina %}
+    <li class="active">
+        <a href="{{ path('prenomina_index') }}"> <i class="fa  fa-dollar"></i> Prenóminas</a>
+        <ul class="nav">
+            <li ><a href="{{ path('prenomina_new') }}"><i class="fa fa-plus"></i> Generar nueva prenómina</a></li>
+        </ul>
+    </li>
+{% endblock%}
+ {% block content %}
+     <div class="page-header">
+         <h3 id="glyphicons"> Prenómina CUC del {{ prenomina.taller }} {{ prenomina.mes__toString }} {{ prenomina.anno }}</h3>
+     </div>
+     <div class="col-lg-12 col-md-12 text-right">
+         <a href="{{ path('prenomina_cuc_pdf', {'id': prenomina.id}) }}" class="btn btn-danger"><i class="fa fa-book"></i> Exportar a PDF</a>
+         <a href="{{ path('prenomina_show', {'id': prenomina.id}) }}" class="btn btn-info" ><i></i> Prenómina en CUP</a>
+     </div>
+     <div class="col-lg-12 col-md-12">
+         <table class="table table-striped prenomina">
+             <thead>
+             <th>Trabajador</th>
+             <th>Total en CUP</th>
+             <th>Coeficiente en CUC</th>
+             <th>Total a cobrar</th>
+             </thead>
+             <tbody>
+             {% for trabajador in prenomina.prenominaTrabajador %}
+                 <tr>
+                     <td>{{ trabajador.trabajadores}}</td>
+                     <td>{{ trabajador.totalcobrarcup | number_format(2,'.')}}</td>
+                     <td>{{ prenomina.cuc | number_format(7,'.')}}</td>
+                     <td>{{ trabajador.totalcobrarcuc | number_format(2,'.')}}</td>
+                 </tr>
+             {% endfor %}
+
+             </tbody>
+         </table>
+     </div>
+
+ {% endblock %}
+{% block js %}
+    <script type="text/javascript" src="{{ asset('bundles/scs/plugins/spinner/jquery.spinner.min.js') }}"></script>
+{% endblock  %}

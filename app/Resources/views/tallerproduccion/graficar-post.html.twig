@@ -1,0 +1,88 @@
+{% extends 'layout.html.twig' %}
+{% block title %}Graficar por períodos - Sistema de Certificación de Salarios{% endblock %}
+{% block css %}
+    <link href="{{ asset('bundles/scs/plugins/data-tables/DT_bootstrap.css') }}" rel="stylesheet">
+{% endblock %}
+{% block produccion %}
+    <li class="active">
+        <a href="{{ path('tallerproduccion_index') }}"> <i class="fa fa-wrench"></i> Relaciones de producción</a>
+        <ul class="nav">
+            <li><a href="{{ path('tallerproduccion_new') }}"><i class="fa fa-plus"></i> Agregar relación de producción</a></li>
+            <li class="active"><a href="{{ path('tallerproduccion_graficar') }}"><i class="fa fa-bar-chart-o"></i> Graficar por período</a></li>
+        </ul>
+    </li>
+
+{% endblock%}
+{% block content %}
+    <div class="page-header">
+        <h3 id="glyphicons">Graficar por períodos</h3>
+    </div>
+    <form class="form-horizontal" role="form" method="post" action="{{ path('tallerproduccion_graficar_post') }}">
+        <div class="form-group">
+            <label class="col-sm-2 control-label col-lg-2">Período:</label>
+            <div class="form-group col-md-3 col-lg-3">
+                <label class="col-sm-2 control-label col-lg-2" >Inicio</label>
+                <div class="col-lg-10">
+                    <input type="month" class="form-control" name="inicio" required>
+                    <span class="help-block">
+                        Ej: 2016-01
+                    </span>
+                </div>
+            </div>
+            <div class="form-group col-md-3 col-lg-3">
+                <label class="col-sm-2 control-label col-lg-2">Fin</label>
+                <div class="col-lg-10">
+                    <input type="month" class="form-control" name="fin" required>
+                    <span class="help-block">
+                        Ej: 2016-01
+                    </span>
+                </div>
+            </div>
+            <div class="form-group col-md-4 col-lg-4">
+                <label class="col-sm-2 control-label col-lg-2">Taller</label>
+                <div class="col-lg-10">
+                    <select class="form-control" name="taller">
+                        {% for taller in talleres %}
+                            <option value="{{ taller.id }}">{{ taller }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="form-group col-lg-12 col-md-12">
+            <button type="submit" class="btn btn-warning"><i class="fa fa-bar-chart-o"></i> Graficar</button>
+            <a class="btn btn-danger" href="{{ path('graficar_pdf') }}?inicio={{ inicio }}&fin={{ fin }}"><i class="fa fa-file"></i> Exportar a PDF</a>
+        </div>
+    </form>
+    <div class="col-lg-12 col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">Gráfico por período
+            </div>
+            <div class="panel-body">
+                <div class="panel-body text-center">
+                    <canvas id="bar" height="300" width="900"></canvas>
+                </div>
+            </div>
+            <div class="text-center">Períodos</div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script src="{{ asset('bundles/scs/plugins/chart/Chart.js') }}" type="text/javascript"></script>
+
+    <script>
+        var barChartData = {
+            labels : [{% for x in ejeX %}"{{ x | date('m-Y') }}",{% endfor %}],
+            datasets : [
+                {
+                    fillColor : "#B8DD73",
+                    strokeColor : "#B8DD73)",
+                    data : [{% for y in cantidad %}"{{ y }}",{% endfor %}]
+                }
+            ]
+
+        };
+        new Chart(document.getElementById("bar").getContext("2d")).Bar(barChartData);
+    </script>
+{% endblock %}

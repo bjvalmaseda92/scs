@@ -1,0 +1,23 @@
+categoria_index:
+    path:     /
+    defaults: { _controller: "scsBundle:Categoria:index" }
+    methods:  GET
+
+categoria_show:
+    path:     /{id}/show
+    defaults: { _controller: "scsBundle:Categoria:show" }
+    methods:  GET
+
+categoria_new:
+    path:     /new
+    defaults: { _controller: "scsBundle:Categoria:new" }
+    methods:  [GET, POST]
+
+categoria_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "scsBundle:Categoria:edit" }
+    methods:  [GET, POST]
+
+categoria_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "scsBundle:Categoria:delete" }

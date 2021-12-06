@@ -1,0 +1,72 @@
+scs_usuarios:
+    resource: "@scsBundle/Resources/config/routing/usuario.yml"
+    prefix:   /usuarios
+
+scs_pdf:
+    resource: "@scsBundle/Resources/config/routing/pdf.yml"
+    prefix:   /pdf
+
+scs_categorias:
+    resource: "@scsBundle/Resources/config/routing/categoria.yml"
+    prefix:   /categorias
+
+scs_departamentos:
+    resource: "@scsBundle/Resources/config/routing/departamento.yml"
+    prefix:   /departamentos
+
+scs_escalas:
+    resource: "@scsBundle/Resources/config/routing/escala.yml"
+    prefix:   /escalas
+
+scs_tallerproduccion:
+    resource: "@scsBundle/Resources/config/routing/tallerproduccion.yml"
+    prefix:   /tallerproduccion
+
+scs_coeficiente:
+    resource: "@scsBundle/Resources/config/routing/coeficiente.yml"
+    prefix:   /coeficiente
+
+scs_prenomina:
+    resource: "@scsBundle/Resources/config/routing/prenomina.yml"
+    prefix:   /prenomina
+
+scs_basecalculo:
+    resource: "@scsBundle/Resources/config/routing/basecalculo.yml"
+    prefix:   /basecalculo
+
+scs_taller:
+    resource: "@scsBundle/Resources/config/routing/taller.yml"
+    prefix:   /taller
+
+scs_trabajador:
+    resource: "@scsBundle/Resources/config/routing/trabajador.yml"
+    prefix:   /trabajador
+
+scs_homepage:
+    path:     /
+    defaults: { _controller: scsBundle:Default:index }
+
+usuario_profile:
+    path:     /edit/profile/{id}
+    defaults: { _controller: scsBundle:Security:profile }
+    methods: [GET, POST]
+
+login:
+    path: /login
+    defaults: {_controller: scsBundle:Security:login }
+
+usuario_login:
+    path: /login
+    defaults: { _controller: scsBundle:Security:login}
+
+usuario_login_check:
+    path: /login_check
+
+usuario_logout:
+    path: /logout
+
+scs_ayuda:
+    path: /ayuda
+    defaults: { _controller: scsBundle:Default:ayuda}
+
+

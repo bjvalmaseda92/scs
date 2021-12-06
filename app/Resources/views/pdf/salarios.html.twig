@@ -1,0 +1,65 @@
+{% extends 'pdf/layout-pdf.html.twig' %}
+{% block title %}<h4>Salarios base de cálculo por períodos</h4>{% endblock %}
+    {% block content %}
+        <table class="table table-striped">
+            <tr>
+                <th>
+                    Período
+                </th>
+                <th>
+                    Taller
+                </th>
+                <th>
+                    Fondo de salario
+                </th>
+                <th>
+                    Maestria
+                </th>
+                <th>
+                    Pago por rendimiento
+                </th>
+                <th>
+                    Otros pagos
+                </th>
+                <th>
+                    Fondo de salario base de cálculo
+                </th>
+                <th class=" text-center">
+                    &nbsp;
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for fondo in salarios %}
+                <tr class="odd gradeX">
+                    <td >
+                        {{ fondo.mes__toString ~' '~ fondo.anno }}
+                    </td>
+                    <td >
+                        {{ fondo.taller }}
+                    </td>
+                    <td>
+                        {{ fondo.fondo | number_format(2,'.')}}
+                    </td>
+                    <td>
+                        {{ fondo.maestria | number_format(2,'.')}}
+                    </td>
+                    <td>
+                        {{ fondo.rendimiento | number_format(2,'.')}}
+                    </td>
+                    <td>
+                        {{ fondo.otros | number_format(2,'.')}}
+                    </td>
+                    <td>
+                        {{ fondo.basecalculo | number_format(2,'.')}}
+                    </td>
+
+                </tr>
+            {% else %}
+                <tr>
+                    <td class="text-center text-danger">No hay salarios base de claculo para mostrar</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {%endblock %}

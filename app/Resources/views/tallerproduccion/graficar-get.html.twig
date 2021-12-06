@@ -1,0 +1,77 @@
+{% extends 'layout.html.twig' %}
+{% block title %}Graficar por períodos - Sistema de Certificación de Salarios{% endblock %}
+{% block css %}
+    <link href="{{ asset('bundles/scs/plugins/data-tables/DT_bootstrap.css') }}" rel="stylesheet">
+{% endblock %}
+{% block produccion %}
+    <li class="active">
+        <a href="{{ path('tallerproduccion_index') }}"> <i class="fa fa-wrench"></i> Relaciones de producción</a>
+        <ul class="nav">
+            <li><a href="{{ path('tallerproduccion_new') }}"><i class="fa fa-plus"></i> Agregar relación de producción</a></li>
+            <li class="active"><a href="{{ path('tallerproduccion_graficar') }}"><i class="fa fa-bar-chart-o"></i> Graficar por período</a></li>
+        </ul>
+    </li>
+
+{% endblock%}
+{% block content %}
+    <div class="page-header">
+        <h3 id="glyphicons">Graficar por períodos</h3>
+    </div>
+    {% for mensaje in app.session.flashbag.get('error') %}
+        <div class="alert alert-danger fade in">
+            <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+            {{ mensaje }}
+        </div>
+    {% endfor %}
+    <form class="form-horizontal" role="form" method="post" action="{{ path('tallerproduccion_graficar_post') }}">
+        <div class="form-group">
+            <label class="col-sm-2 control-label col-lg-2">Período:</label>
+            <div class="form-group col-md-3 col-lg-3">
+                <label class="col-sm-2 control-label col-lg-2" >Inicio</label>
+                <div class="col-lg-10">
+                    <input type="month" class="form-control" name="inicio" required>
+                    <span class="help-block">
+                        Ej: 2016-01
+                    </span>
+                </div>
+            </div>
+            <div class="form-group col-md-3 col-lg-3">
+                <label class="col-sm-2 control-label col-lg-2">Fin</label>
+                <div class="col-lg-10">
+                    <input type="month" class="form-control" name="fin" required>
+                    <span class="help-block">
+                     Ej: 2016-01
+                    </span>
+
+                </div>
+            </div>
+            <div class="form-group col-md-4 col-lg-4">
+                <label class="col-sm-2 control-label col-lg-2">Taller</label>
+                <div class="col-lg-10">
+                    <select class="form-control" name="taller">
+                        {% for taller in talleres %}
+                            <option value="{{ taller.id }}">{{ taller }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="form-group col-lg-12 col-md-12">
+            <button type="submit" class="btn btn-warning"><i class="fa fa-bar-chart-o"></i> Graficar</button>
+        </div>
+    </form>
+
+
+{% endblock %}
+
+{% block js %}
+    <script src="{{ asset('bundles/scs/plugins/data-tables/jquery.dataTables.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/scs/plugins/data-tables/DT_bootstrap.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/scs/plugins/data-tables/data/produccion.js') }}" type="text/javascript"></script>
+    <script>
+        jQuery(document).ready(function() {
+            TableManaged.init();
+        });
+    </script>
+
+{% endblock %}

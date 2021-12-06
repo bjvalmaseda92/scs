@@ -1,0 +1,33 @@
+prenomina_index:
+    path:     /
+    defaults: { _controller: "scsBundle:Prenomina:index" }
+    methods:  GET
+
+prenomina_show:
+    path:     /{id}/show/cup
+    defaults: { _controller: "scsBundle:Prenomina:show" }
+    methods:  GET
+
+prenomina_showcuc:
+    path:     /{id}/show/cuc
+    defaults: { _controller: "scsBundle:Prenomina:showcuc" }
+    methods:  GET
+
+prenomina_new:
+    path:     /new
+    defaults: { _controller: "scsBundle:Prenomina:new" }
+    methods:  [GET, POST]
+
+prenomina_new2:
+    path:     /new-step2/{id}
+    defaults: { _controller: "scsBundle:Prenomina:new2" }
+    methods:  [GET, POST]
+
+prenomina_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "scsBundle:Prenomina:edit" }
+    methods:  [GET, POST]
+
+prenomina_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "scsBundle:Prenomina:delete" }

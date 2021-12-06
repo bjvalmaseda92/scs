@@ -1,0 +1,23 @@
+{% extends 'pdf/layout-pdf.html.twig' %}
+{% block title %}<h4>Categorías ocupacionales</h4>{% endblock %}
+    {% block content %}
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Nombre de la categoría</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for categoria in categorias %}
+                <tr>
+                    <td>{{ categoria.nombre }}</td>
+
+                </tr>
+            {% else %}
+                <tr>
+                    <td class="text-center text-danger">No hay categorías ocupacionales para mostrar</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {%endblock %}

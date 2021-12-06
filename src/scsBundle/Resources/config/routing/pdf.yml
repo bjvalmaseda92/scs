@@ -1,0 +1,54 @@
+usuarios_pdf:
+    path:     /usuarios
+    defaults: { _controller: "scsBundle:PDF:usuarios" }
+    methods:  GET
+
+categorias_pdf:
+    path:     /categorias
+    defaults: { _controller: "scsBundle:PDF:categorias" }
+    methods:  GET
+
+escalas_pdf:
+    path:     /escalas
+    defaults: { _controller: "scsBundle:PDF:escala" }
+    methods:  GET
+
+talleres_pdf:
+    path:     /talleres
+    defaults: { _controller: "scsBundle:PDF:taller" }
+    methods:  GET
+
+departamentos_pdf:
+    path:     /departamentos
+    defaults: { _controller: "scsBundle:PDF:departamento" }
+    methods:  GET
+
+trabajadores_pdf:
+    path:     /trabajadores
+    defaults: { _controller: "scsBundle:PDF:trabajadores" }
+    methods:  GET
+
+relaciones_pdf:
+    path:     /relaciones
+    defaults: { _controller: "scsBundle:PDF:relaciones" }
+    methods:  GET
+
+salarios_pdf:
+    path:     /salarios
+    defaults: { _controller: "scsBundle:PDF:salarios" }
+    methods:  GET
+
+graficar_pdf:
+    path:     /graficar
+    defaults: { _controller: "scsBundle:PDF:graficar" }
+    methods:  GET
+
+prenomina_cup_pdf:
+    path:     /prenomina/{id}/cup
+    defaults: { _controller: "scsBundle:PDF:prenominaCUP" }
+    methods:  GET
+
+prenomina_cuc_pdf:
+    path:     /prenomina/{id}/cuc
+    defaults: { _controller: "scsBundle:PDF:prenominaCUC" }
+    methods:  GET

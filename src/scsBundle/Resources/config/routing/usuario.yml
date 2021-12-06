@@ -1,0 +1,23 @@
+usuarios_index:
+    path:     /
+    defaults: { _controller: "scsBundle:Usuario:index" }
+    methods:  GET
+
+usuarios_show:
+    path:     /{id}/show
+    defaults: { _controller: "scsBundle:Usuario:show" }
+    methods:  GET
+
+usuarios_new:
+    path:     /new
+    defaults: { _controller: "scsBundle:Usuario:new" }
+    methods:  [GET, POST]
+
+usuarios_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "scsBundle:Usuario:edit" }
+    methods:  [GET, POST]
+
+usuarios_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "scsBundle:Usuario:delete" }

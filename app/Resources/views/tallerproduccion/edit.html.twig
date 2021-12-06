@@ -1,0 +1,96 @@
+{% extends 'layout.html.twig' %}
+{% block title %}Editar relación de producción - Sistema de Certificación de Salarios{% endblock %}
+{% block produccion %}
+    <li class="active">
+        <a href="{{ path('tallerproduccion_index') }}"> <i class="fa fa-wrench"></i> Relaciones de producción</a>
+        <ul class="nav">
+            <li><a href="{{ path('tallerproduccion_new') }}"><i class="fa fa-plus"></i> Agregar relación de producción</a></li>
+            <li ><a href="{{ path('tallerproduccion_graficar') }}"><i class="fa fa-bar-chart-o"></i> Graficar por período</a></li>
+
+        </ul>
+    </li>
+
+{% endblock%}
+
+ {% block content %}
+     <div class="page-header">
+         <h3 id="glyphicons">Editar relación de producción</h3>
+     </div>
+     <div class="panel panel-default">
+         <div class="panel-heading">Datos de la relación de producción</div>
+         <div class="panel-body">
+             <form class="form-horizontal" role="form" method="post" action="{{ path('tallerproduccion_edit', {'id': tallerProduccion.id}) }}">
+                 <div class="form-group{% if error %} has-error{% endif %}">
+                     <label class="col-sm-2 control-label col-lg-2">Período:</label>
+                     <div class="form-group col-md-5 col-lg-5">
+                         <label class="col-sm-2 control-label col-lg-2">Mes</label>
+                         <div class="col-lg-10">
+                             {{ form_widget(edit_form.mes, { 'attr': {'class': 'form-control'} }) }}
+                         </div>
+                     </div>
+                     <div class="form-group col-md-5 col-lg-5">
+                         <label class="col-sm-2 control-label col-lg-2">Año</label>
+                         <div class="col-lg-10">
+                             {{ form_widget(edit_form.anno, { 'attr': {'class': 'form-control'} }) }}
+                         </div>
+                     </div>
+                     {% if error %}
+                         <span class="col-md-12 col-lg-12 help-block text-danger">
+                         {{ sms }}
+                     </span>
+                     {% endif %}
+                 </div>
+                 <div class="form-group">
+                     <label class="col-sm-2 control-label col-lg-2"></label>
+                     <div class="form-group col-md-5 col-lg-5">
+                         <label class="col-sm-2 control-label col-lg-2">Plan</label>
+                         <div class="col-lg-10">
+                             {{ form_widget(edit_form.plan, { 'attr': {'class': 'form-control money'} }) }}
+                         </div>
+                     </div>
+                     <div class="form-group col-md-5 col-lg-5">
+                         <label class="col-sm-2 control-label col-lg-2">Real</label>
+                         <div class="col-lg-10">
+                             {{ form_widget(edit_form.preal, { 'attr': {'class': 'form-control money'} }) }}
+                         </div>
+                     </div>
+
+                 </div>
+                 <div class="form-group {% if error2 %} has-error{% endif %}">
+                     <label class="col-sm-2 control-label col-lg-2"></label>
+                     <div class="form-group col-md-5 col-lg-5">
+                         <label class="col-sm-2 control-label col-lg-2">Taller:</label>
+                         <div class="col-lg-10">
+                             {{ form_widget(edit_form.taller, { 'attr': {'class': 'form-control'} }) }}
+                             {% if error2 %}
+                                 <span class="help-block text-danger">
+                                     {{ sms2 }}
+                                 </span>
+                             {% endif %}
+                         </div>
+                     </div>
+                 </div>
+
+
+                 <div class="form-group">
+                     <div class="col-lg-12 col-md-12">
+                         <button type="submit" class="btn btn-success"><i class="fa fa-check-square"></i> Aceptar</button>
+                         <a href="{{ path('tallerproduccion_index') }}" class="btn btn-danger"><i class="fa fa-ban"></i> Cancelar</a>
+                     </div>
+                 </div>
+                 {{ form_row(edit_form._token) }}
+             </form>
+
+         </div>
+     </div>
+ {% endblock %}
+{% block js %}
+    <script type="text/javascript" src="{{ asset('bundles/scs/plugins/moneyformat/money-format.min.js') }}"></script>
+    <script>
+        $('.money').priceFormat({
+            prefix: '',
+            centsSeparator: '.',
+            thousandsSeparator: '',
+        });
+    </script>
+{% endblock  %}

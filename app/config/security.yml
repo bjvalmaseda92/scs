@@ -1,0 +1,31 @@
+security:
+
+    providers:
+        usuarios:
+            entity: { class: scsBundle\Entity\Usuario }
+
+    encoders:
+        scsBundle\Entity\Usuario: { algorithm: sha512, iterations: 10 }
+
+    firewalls:
+        admin:
+            pattern: ^/
+            provider: usuarios
+            anonymous: ~
+            form_login:
+                login_path: usuario_login
+                check_path: usuario_login_check
+                default_target_path: /
+            remember_me:
+                key: trebol
+                lifetime: 3600
+            logout:
+                path: usuario_logout
+                target: /login
+
+    access_control:
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/, roles: ROLE_TECNICO }
+
+    role_hierarchy:
+        ROLE_ADMIN: [ ROLE_TECNICO ]

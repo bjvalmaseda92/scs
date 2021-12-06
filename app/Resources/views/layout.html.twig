@@ -1,0 +1,129 @@
+{% set user=app.user %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}Sistema de Certificación de Salarios - Confecciones Trebol{% endblock %}</title>
+    {% block stylesheets %}
+        <link href="{{ asset('bundles/scs/css/bootstrap.css') }}" rel="stylesheet">
+        <link href="{{ asset('bundles/scs/font-awesome/css/font-awesome.css') }}" rel="stylesheet">
+        <link href="{{ asset('bundles/scs/css/style.css') }}" rel="stylesheet">
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.png') }}" />
+        {% block css %}
+        {% endblock %}
+
+    {% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.png') }}" />
+</head>
+<body style="min-height: 1000px">
+{%  block body %}
+    <header class="navbar navbar-inverse navbar-fixed-top bs-docs-nav" role="banner">
+        <div class="navbar-header">
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="{{ path('scs_homepage')}}" class="navbar-brand"><img src="{{ asset('bundles/scs/img/Untitled-1.png') }}" height="50px" style="margin:-10px"></a>
+        </div>
+        <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="{{ path('scs_ayuda') }}"><i class="fa fa-question"></i> Ayuda</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> {{ user.usuario }}<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{ path('usuario_profile', {'id': user.id}) }}"><i class="fa fa-edit"></i> Editar perfil</a></li>
+                        <li><a href="{{ path('usuario_logout') }} "><i class="fa fa-power-off"></i> Salir</a></li>
+
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <div class="col-md-3">
+        <div class="bs-sidebar hidden-print affix" role="complementary">
+            <ul class="nav bs-sidenav">
+                {% block inicio %}
+                    <li >
+                        <a href="{{ path('scs_homepage') }}"><i class="fa fa-home"></i> Inicio</a>
+                    </li>
+                {% endblock%}
+                {% if is_granted('ROLE_ADMIN') %}
+                {% block usuarios %}
+                    <li >
+                        <a href="{{ path('usuarios_index') }}"> <i class="fa fa-user"></i> Usuarios</a>
+
+                    </li>
+                {% endblock%}
+                {% endif %}
+                {% block categoria %}
+                    <li >
+                        <a href="{{ path('categoria_index') }}"> <i class="fa fa-folder-open"></i> Categoría ocupacional</a>
+                    </li>
+                {% endblock%}
+                {% block escala %}
+                    <li >
+                        <a href="{{ path('escalas_index') }}"> <i class="fa fa-sitemap"></i> Escalas salariales</a>
+                    </li>
+                {% endblock%}
+                {% block taller %}
+                    <li >
+                        <a href="{{ path('taller_index') }}"> <i class="fa  fa-wrench"></i> Talleres</a>
+                    </li>
+                {% endblock%}
+                {% block departamento %}
+                    <li>
+                        <a href="{{ path('departamento_index') }}"> <i class="fa  fa-building-o"></i> Departamentos</a>
+                    </li>
+                {% endblock%}
+                {% block trabajador %}
+                    <li>
+                        <a href="{{ path('trabajador_index') }}"> <i class="fa  fa-users"></i> Trabajadores</a>
+                    </li>
+                {% endblock%}
+                {% block prenomina %}
+                    <li>
+                        <a href="{{ path('prenomina_index') }}"> <i class="fa  fa-dollar"></i> Prenóminas</a>
+                    </li>
+                {% endblock%}
+                {% block produccion %}
+                    <li>
+                        <a href="{{ path('tallerproduccion_index') }}"> <i class="fa  fa-dollar"></i> Relaciones de producción</a>
+                    </li>
+                {% endblock%}
+                {% block basecalculo %}
+                    <li >
+                        <a href="{{ path('basecalculo_index') }}"> <i class="fa fa-wrench"></i> Salario base de cálculo</a>
+                    </li>
+
+                {% endblock%}
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-9 col-lg-9" role="main">
+        <div class="bs-docs-section">
+            {% block content %}
+            {% endblock %}
+
+        </div>
+    </div>
+    <footer class="site-footer navbar-fixed-bottom">
+        <div class="text-center">
+            {{ date() | date('Y') }} - Sistema de Certificación de Salarios Confecciones Trébol
+            <a href="#" class="go-top">
+                <i class="fa fa-angle-up"></i>
+            </a>
+        </div>
+    </footer>
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('bundles/scs/js/jquery.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/scs/js/bootstrap.min.js') }}"></script>
+    {% block js %}
+    {% endblock %}
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,23 @@
+escalas_index:
+    path:     /
+    defaults: { _controller: "scsBundle:Escala:index" }
+    methods:  GET
+
+escalas_show:
+    path:     /{id}/show
+    defaults: { _controller: "scsBundle:Escala:show" }
+    methods:  GET
+
+escalas_new:
+    path:     /new
+    defaults: { _controller: "scsBundle:Escala:new" }
+    methods:  [GET, POST]
+
+escalas_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "scsBundle:Escala:edit" }
+    methods:  [GET, POST]
+
+escalas_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "scsBundle:Escala:delete" }

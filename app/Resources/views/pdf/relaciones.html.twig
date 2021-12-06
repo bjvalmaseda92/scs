@@ -1,0 +1,64 @@
+{% extends 'pdf/layout-pdf.html.twig' %}
+{% block title %}<h4>Relaciones Plan/Real de la producción</h4>{% endblock %}
+    {% block content %}
+        <table class="table table-striped">
+            <thead>
+
+            <tr>
+                <th>
+                   Período
+                </th>
+                <th>
+                     Taller
+                </th>
+                <th>
+                    Plan
+                </th>
+                <th>
+                    Real
+                </th>
+                <th>
+                    Salario Formador
+                </th>
+                <th>
+                    Fondo de salario acumulado/Plan
+                </th>
+                <th>
+                    Fondo de salario acumulado/Real
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for relacion in producciones %}
+                <tr class="odd gradeX">
+                    <td >
+                        {{ relacion.mes__toString ~' '~ relacion.anno }}
+                    </td>
+                    <td>
+                        {{ relacion.taller}}
+                    </td>
+                    <td>
+                        {{ relacion.plan | number_format(2,'.')}}
+                    </td>
+                    <td>
+                        {{ relacion.preal | number_format(2,'.')}}
+                    </td>
+                    <td>
+                        {{ relacion.salarioformador | number_format(2,'.')}}
+                    </td>
+                    <td>
+                        {{ relacion.relacionplan | number_format(7,'.')}}
+                    </td>
+                    <td>
+                        {{ relacion.relacionreal | number_format(7,'.')}}
+                    </td>
+
+                </tr>
+            {% else %}
+                <tr>
+                    <td class="text-center text-danger">No hay relaciones plan-real para mostrar</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {%endblock %}

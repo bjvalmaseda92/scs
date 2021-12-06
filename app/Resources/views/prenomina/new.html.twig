@@ -1,0 +1,142 @@
+{% extends 'layout.html.twig' %}
+{% block title %}Nueva prénomina Paso 1 de 3 - Sistema de Certificación de Salarios{% endblock %}
+{% block css %}
+    <link href="{{ asset('bundles/scs/plugins/spinner/bootstrap-spinner.css') }}" rel="stylesheet">
+{% endblock %}
+{% block prenomina %}
+    <li class="active">
+        <a href="{{ path('prenomina_index') }}"> <i class="fa  fa-dollar"></i> Prenóminas</a>
+        <ul class="nav">
+            <li class="active"><a href="{{ path('prenomina_new') }}"><i class="fa fa-plus"></i> Generar nueva prenómina</a></li>
+        </ul>
+    </li>
+{% endblock%}
+ {% block content %}
+     <div class="page-header">
+         <h3 id="glyphicons"> Crear prenómina</h3>
+     </div>
+     <div class="panel panel-default">
+         <div class="panel-heading">Nueva prénomina Paso 1 de 2</div>
+         <div class="panel-body">
+             <div class="pasos">
+                 <ul class="nav nav-pills nav-justified steps">
+                     <li class="active">
+            <span class="step">
+                <span class="number">
+                    1
+                </span>
+                <span class="desc">
+                    <i class="fa fa-check"></i> Datos de la prenómina
+                </span>
+            </span>
+                     </li>
+                     <li class="">
+            <span class="step">
+                <span class="number">
+                    2
+                </span>
+                <span class="desc">
+                    <i class="fa fa-check"></i> Datos de los trabajadores
+                </span>
+            </span>
+                 </ul>
+                 <div id="bar" class="progress progress-striped" role="progressbar">
+                     <div class="progress-bar progress-bar-success active" style="width: 50%;">
+                     </div>
+                 </div>
+             </div>
+             <form class="form-horizontal" role="form" method="post" action="{{ path('prenomina_new') }}">
+                 <div class="form-group{% if error %} has-error{% endif %}">
+                     <label class="col-sm-2 control-label col-lg-2">Período:</label>
+                     <div class="form-group col-md-5 col-lg-5">
+                         <label class="col-sm-2 control-label col-lg-2">Mes</label>
+                         <div class="col-lg-10">
+                             {{ form_widget(form.mes, { 'attr': {'class': 'form-control'} }) }}
+                         </div>
+                     </div>
+                     <div class="form-group col-md-5 col-lg-5">
+                         <label class="col-sm-2 control-label col-lg-2">Año</label>
+                         <div class="col-lg-10">
+                             {{ form_widget(form.anno, { 'attr': {'class': 'form-control'} }) }}
+                         </div>
+                     </div>
+                     {% if error %}
+                     <span class="col-md-12 col-lg-12 help-block text-danger">
+                         {{ sms }}
+                     </span>
+                     {% endif %}
+
+                 </div>
+                 <div class="form-group">
+                     <label class="col-sm-2 control-label col-lg-2">Coeficientes salariales:</label>
+                     <div class="form-group col-md-5 col-lg-5">
+                         <label class="col-sm-2 control-label col-lg-2">CUP</label>
+                         <div class="col-lg-10">
+                             <div class="input-group spinner" data-trigger="spinner">
+                                 {{ form_widget(form.cup, { 'attr': {'class': 'form-control','value':0, 'data-max':1,'data-min':0,'data-rule':'currency','data-precision':7} }) }}
+                                 <div class="input-group-addon">
+                                     <a href="javascript:;" class="spin-up" data-spin="up"><i class="fa fa-caret-up"></i></a>
+                                     <a href="javascript:;" class="spin-down" data-spin="down"><i class="fa fa-caret-down"></i></a>
+                                 </div>
+                             </div>
+                             {% if form_errors(form.cup) %}
+                                 <span class="help-block text-danger">
+                                     {{ form_errors(form.cup) }}
+                                 </span>
+                             {% endif %}
+                         </div>
+                     </div>
+                     <div class="form-group col-md-5 col-lg-5">
+                         <label class="col-sm-2 control-label col-lg-2">CUC</label>
+                         <div class="col-lg-10">
+
+                             <div class="input-group spinner" data-trigger="spinner">
+                                 {{ form_widget(form.cuc, { 'attr': {'class': 'form-control','value':0, 'data-max':1,'data-min':0,'data-rule':'currency','data-precision':7} }) }}
+                                 <div class="input-group-addon">
+                                     <a href="javascript:;" class="spin-up" data-spin="up"><i class="fa fa-caret-up"></i></a>
+                                     <a href="javascript:;" class="spin-down" data-spin="down"><i class="fa fa-caret-down"></i></a>
+                                 </div>
+                             </div>
+                             {{ form_widget(form.cuc, { 'attr': {'class': 'form-control'} }) }}
+                             {% if form_errors(form.cuc) %}
+                                 <span class="help-block text-danger">
+                                     {{ form_errors(form.cuc) }}
+                                 </span>
+                             {% endif %}
+                         </div>
+                     </div>
+
+
+                 </div>
+                 <div class="form-group">
+                     <label class="col-sm-2 control-label col-lg-2"></label>
+                     <div class="form-group col-md-5 col-lg-5">
+                         <label class="col-sm-2 control-label col-lg-2">Taller:</label>
+                         <div class="col-lg-10">
+                             {{ form_widget(form.taller, { 'attr': {'class': 'form-control'} }) }}
+                             {% if form_errors(form.taller) %}
+                                 <span class="help-block text-danger">
+                                     {{ form_errors(form.taller) }}
+                                 </span>
+                             {% endif %}
+                         </div>
+                     </div>
+                 </div>
+
+
+
+                 {{ form_row(form._token) }}
+
+                 <div class="form-group">
+                     <div class="col-lg-12 col-md-12 text-center">
+                         <button type="submit" class="btn btn-success"> Siguiente <i class="fa  fa-arrow-circle-o-right"></i></button>
+                     </div>
+                 </div>
+             </form>
+
+         </div>
+     </div>
+ {% endblock %}
+{% block js %}
+    <script type="text/javascript" src="{{ asset('bundles/scs/plugins/spinner/jquery.spinner.min.js') }}"></script>
+{% endblock  %}

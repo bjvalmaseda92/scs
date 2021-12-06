@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Sistema de Certificación de Salarios - Confecciones Trebol</title>
+    {% block stylesheets %}
+        <link href="{{ app.request.schemeAndHttpHost ~ asset('bundles/scs/css/bootstrap.css') }}" rel="stylesheet">
+        <link href="{{ app.request.schemeAndHttpHost ~ asset('bundles/scs/font-awesome/css/font-awesome.css') }}" rel="stylesheet">
+        {% block css %}
+        {% endblock %}
+
+    {% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    <style>
+        .prenomina{
+            font-size: 11px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div  class="header">
+        <ul class="nav nav-pills pull-right">
+            <li>{{ date() | date('d-m-Y') }}</li>
+
+        </ul>
+        <h3 class="text-muted"><img src="{{ app.request.schemeAndHttpHost ~ asset('bundles/scs/img/Untitled-1.png') }}" height="60px" ></h3>
+    </div>
+    <div class="col-md-12 col-lg-12">
+        <div class="col-md-12 col-lg-12 text-center">
+            {% block title %}{% endblock %}
+        </div >
+        <div class="col-md-12 col-lg-12">
+            {% block content %}
+
+            {%endblock %}
+        </div>
+    </div>
+</div>
+
+
+{% block javascripts %}
+    <script type="text/javascript" src="{{ app.request.schemeAndHttpHost ~ asset('bundles/scs/js/jquery.js') }}"></script>
+    <script type="text/javascript" src="{{ app.request.schemeAndHttpHost ~ asset('bundles/scs/js/bootstrap.min.js') }}"></script>
+    {% block js %}
+    {% endblock %}
+{% endblock %}
+</body>
+</html>

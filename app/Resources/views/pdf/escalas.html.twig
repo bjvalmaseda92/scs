@@ -1,0 +1,23 @@
+{% extends 'pdf/layout-pdf.html.twig' %}
+{% block title %}<h4>Escalas salariales</h4>{% endblock %}
+    {% block content %}
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Nombre de la escala</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for escala in escalas %}
+                <tr>
+                    <td>{{ escala.nombre }}</td>
+
+                </tr>
+            {% else %}
+                <tr>
+                    <td class="text-center text-danger">No hay escalas salariales para mostrar</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {%endblock %}

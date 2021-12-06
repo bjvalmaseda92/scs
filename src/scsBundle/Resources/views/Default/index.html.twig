@@ -1,0 +1,91 @@
+{% extends 'layout.html.twig' %}
+{% block inicio %}
+    <li class="active">
+        <a href="{{ path('scs_homepage') }}"><i class="fa fa-home"></i> Inicio</a>
+    </li>
+{% endblock%}
+{% block content %}
+    <div class="page-header">
+        <h4 id="glyphicons">Sistema de certificación de salarios </h4>
+    </div>
+    {% for mensaje in app.session.flashbag.get('success') %}
+        <div class="alert alert-success fade in">
+            <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+            {{ mensaje }}
+        </div>
+    {% endfor %}
+    <div class="row">
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="dashboard-stat blue">
+                <div class="visual">
+                    <i class="fa fa-users"></i>
+                </div>
+                <div class="details">
+                    <div class="number">
+                        {{ trabajadores }}
+                    </div>
+                    <div class="desc">
+                        Trabajadores
+                    </div>
+                </div>
+                <a class="more" href="{{ path('trabajador_index') }}">
+                    Ver todos <i class="fa fa-arrow-circle-right"></i>
+                </a>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="dashboard-stat blue">
+                <div class="visual">
+                    <i class="fa fa-wrench"></i>
+                </div>
+                <div class="details">
+                    <div class="number">
+                        {{ talleres }}
+                    </div>
+                    <div class="desc">
+                        Talleres
+                    </div>
+                </div>
+                <a class="more" href="{{ path('taller_index') }}">
+                    Ver todos<i class="fa fa-arrow-circle-right"></i>
+                </a>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="dashboard-stat blue">
+                <div class="visual">
+                    <i class="fa fa-dollar"></i>
+                </div>
+                <div class="details">
+                    <div class="number">
+                        Prenóminas
+                    </div>
+                    <div class="desc">
+                       Salariales
+                    </div>
+                </div>
+                <a class="more" href="{{ path('prenomina_index') }}">
+                    Ver <i class="fa fa-arrow-circle-right"></i>
+                </a>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="dashboard-stat blue">
+                <div class="visual">
+                    <i class="fa fa-bar-chart-o"></i>
+                </div>
+                <div class="details">
+                    <div class="number">
+                        Salarios
+                    </div>
+                    <div class="desc">
+                         por período
+                    </div>
+                </div>
+                <a class="more" href="{{ path('tallerproduccion_graficar') }}">
+                   Gráficar <i class="fa fa-arrow-circle-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

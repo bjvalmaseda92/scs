@@ -1,0 +1,110 @@
+{% extends 'layout.html.twig' %}
+{% block title %}Nueva prénomina Paso 2 de 2 - Sistema de Certificación de Salarios{% endblock %}
+{% block css %}
+{% endblock %}
+{% block prenomina %}
+    <li class="active">
+        <a href="{{ path('prenomina_index') }}"> <i class="fa  fa-dollar"></i> Prenóminas</a>
+        <ul class="nav">
+            <li class="active"><a href="{{ path('prenomina_new') }}"><i class="fa fa-plus"></i> Generar nueva prenómina</a></li>
+        </ul>
+    </li>
+{% endblock%}
+ {% block content %}
+     <div class="page-header">
+         <h3 id="glyphicons"> Crear prenómina</h3>
+     </div>
+     <div class="panel panel-default">
+         <div class="panel-heading">Nueva prénomina Paso 2 de 2</div>
+         <div class="panel-body">
+             <div class="pasos">
+                 <ul class="nav nav-pills nav-justified steps">
+                     <li class="done">
+            <span class="step">
+                <span class="number">
+                    1
+                </span>
+                <span class="desc">
+                    <i class="fa fa-check"></i> Datos de la prenómina
+                </span>
+            </span>
+                     </li>
+                     <li class="active">
+            <span class="step">
+                <span class="number">
+                    2
+                </span>
+                <span class="desc">
+                    <i class="fa fa-check"></i> Datos de los trabajadores
+                </span>
+            </span>
+                     </li>
+
+                 </ul>
+                 <div id="bar" class="progress progress-striped" role="progressbar">
+                     <div class="progress-bar progress-bar-success active" style="width: 100%;">
+                     </div>
+                 </div>
+             </div>
+
+             <form class="form-horizontal" role="form" method="post" action="{{ path('prenomina_new2', {'id': prenomina.id}) }}">
+                {%  if form_errors(form) %}
+                    {{ form_errors(form) }}
+                 {% endif %}
+                 <div style=" max-height:700px; overflow-x: scroll">
+                 <table class="table table-striped prenomina" style=" max-height:700px; overflow-x: scroll">
+                     <thead>
+                        <th>Trabajador</th>
+                        <th>Salario devengado</th>
+                        <th>Maestría</th>
+                        <th>Interrupciones</th>
+                        <th>Instructor</th>
+                        <th>Días feriados</th>
+                        <th>Horas extras</th>
+                        <th>Penalizaciones</th>
+                        <th>Movilización</th>
+                        <th>Vacaciones</th>
+                        <th>Indice de evaluación</th>
+                     </thead>
+                     <tbody>
+                     {% for p in form.prenominaTrabajador %}
+                         <tr>
+                             <td>{{ form_widget(p.trabajadores, { 'attr': {'class': 'trabajador'} }) }}</td>
+                             <td>{{ form_widget(p.salario_devengado) }}</td>
+                             <td>{{ form_widget(p.maestria) }}</td>
+                             <td>{{ form_widget(p.interrupciones) }}</td>
+                             <td>{{ form_widget(p.instructor) }}</td>
+                             <td>{{ form_widget(p.dia_feriado) }}</td>
+                             <td>{{ form_widget(p.horas_extras) }}</td>
+                             <td>{{ form_widget(p.penalizacion) }}</td>
+                             <td>{{ form_widget(p.movilizacion) }}</td>
+                             <td>{{ form_widget(p.vacaciones) }}</td>
+                             <td>{{ form_widget(p.indice_evaluacion) }}</td>
+                         </tr>
+                     {% endfor %}
+                     {{ form_widget(form._token) }}
+
+                     </tbody>
+                 </table>
+                 </div>
+                 </ul>
+                 <div class="form-group">
+                     <div class="col-lg-12 col-md-12 text-center">
+                         <button type="submit" class="btn btn-success"> Finalizar<i class="fa  fa-arrow-circle-o-right"></i></button>
+                     </div>
+                 </div>
+             </form>
+
+         </div>
+     </div>
+ {% endblock %}
+{% block js %}
+    <script type="text/javascript" src="{{ asset('bundles/scs/plugins/moneyformat/money-format.min.js') }}"></script>
+    <script>
+        $('.money').priceFormat({
+            prefix: '',
+            centsSeparator: '.',
+            thousandsSeparator: '',
+        });
+    </script>
+{% endblock  %}

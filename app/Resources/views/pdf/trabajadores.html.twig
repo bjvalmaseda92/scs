@@ -1,0 +1,57 @@
+{% extends 'pdf/layout-pdf.html.twig' %}
+{% block title %}<h4>Trabajadores</h4>{% endblock %}
+    {% block content %}
+        <table class="table table-striped">
+            <thead>
+
+            <tr>
+                <th>
+                   Nombre y apellidos
+                </th>
+                <th>
+                    Carnet de identidad
+                </th>
+                <th>
+                    Dirección particular
+                </th>
+                <th>
+                   Departamento
+                </th>
+                <th>
+                    Escala salarial
+                </th>
+                <th>
+                    Categoría ocupacional
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for trabajador in trabajadores %}
+                <tr >
+                    <td >
+                        {{ trabajador }}
+                    </td>
+                    <td >
+                        {{ trabajador.ci }}
+                    </td>
+                    <td >
+                        {{ trabajador.direccion }}
+                    </td>
+                    <td >
+                        {{ trabajador.departamento }}
+                    </td>
+                    <td >
+                        {{ trabajador.escala }}
+                    </td>
+                    <td >
+                        {{ trabajador.categoria }}
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="6" class="text-center text-danger">No hay trabajadores para mostrar</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {%endblock %}

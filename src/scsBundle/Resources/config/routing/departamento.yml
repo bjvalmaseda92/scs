@@ -1,0 +1,23 @@
+departamento_index:
+    path:     /
+    defaults: { _controller: "scsBundle:Departamento:index" }
+    methods:  GET
+
+departamento_show:
+    path:     /{id}/show
+    defaults: { _controller: "scsBundle:Departamento:show" }
+    methods:  GET
+
+departamento_new:
+    path:     /new
+    defaults: { _controller: "scsBundle:Departamento:new" }
+    methods:  [GET, POST]
+
+departamento_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "scsBundle:Departamento:edit" }
+    methods:  [GET, POST]
+
+departamento_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "scsBundle:Departamento:delete" }

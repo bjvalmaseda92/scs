@@ -1,0 +1,6 @@
+services:
+    validator.unique.exit_coeficiente:
+        class: scsBundle\Validator\Constraints\exitCoeficienteValidator
+        arguments: [@doctrine]
+        tags:
+            - { name: validator.constraint_validator, alias: exit_coeficiente }

@@ -1,0 +1,24 @@
+basecalculo_index:
+    path:     /
+    defaults: { _controller: "scsBundle:BaseCalculo:index" }
+    methods:  GET
+
+basecalculo_show:
+    path:     /{id}/show
+    defaults: { _controller: "scsBundle:BaseCalculo:show" }
+    methods:  GET
+
+basecalculo_new:
+    path:     /new
+    defaults: { _controller: "scsBundle:BaseCalculo:new" }
+    methods:  [GET, POST]
+
+basecalculo_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "scsBundle:BaseCalculo:edit" }
+    methods:  [GET, POST]
+
+basecalculo_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "scsBundle:BaseCalculo:delete" }
+

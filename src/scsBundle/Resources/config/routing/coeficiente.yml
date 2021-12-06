@@ -1,0 +1,24 @@
+coeficiente_index:
+    path:     /
+    defaults: { _controller: "scsBundle:Coeficiente:index" }
+    methods:  GET
+
+coeficiente_show:
+    path:     /{id}/show
+    defaults: { _controller: "scsBundle:Coeficiente:show" }
+    methods:  GET
+
+coeficiente_new:
+    path:     /new
+    defaults: { _controller: "scsBundle:Coeficiente:new" }
+    methods:  [GET, POST]
+
+coeficiente_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "scsBundle:Coeficiente:edit" }
+    methods:  [GET, POST]
+
+coeficiente_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "scsBundle:Coeficiente:delete" }
+    methods:  DELETE

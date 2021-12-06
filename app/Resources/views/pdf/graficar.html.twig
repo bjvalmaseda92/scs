@@ -1,0 +1,33 @@
+{% extends 'pdf/layout-pdf.html.twig' %}
+{% block title %}<h4>Gráfico período {{ inicio }} a {{ fin }}</h4>{% endblock %}
+    {% block content %}
+        <div class="col-lg-12 col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">Gráfico por período
+                </div>
+                <div class="panel-body">
+                    <div class="panel-body text-center">
+                        <canvas id="bar" height="300" width="700"></canvas>
+                    </div>
+                </div>
+                <div class="text-center">Períodos</div>
+            </div>
+        </div>
+    {%endblock %}
+{% block js %}
+    <script src="{{ app.request.schemeAndHttpHost ~ asset('bundles/scs/plugins/chart/Chart.js') }}" type="text/javascript"></script>
+    <script>
+        var barChartData = {
+            labels : [{% for x in ejeX %}"{{ x | date('m-Y') }}",{% endfor %}],
+            datasets : [
+                {
+                    fillColor : "#B8DD73",
+                    strokeColor : "#B8DD73)",
+                    data : [{% for y in cantidad %}"{{ y }}",{% endfor %}]
+                }
+            ]
+
+        };
+        new Chart(document.getElementById("bar").getContext("2d")).Bar(barChartData);
+    </script>
+{% endblock %}

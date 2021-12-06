@@ -1,0 +1,34 @@
+tallerproduccion_index:
+    path:     /
+    defaults: { _controller: "scsBundle:TallerProduccion:index" }
+    methods:  GET
+
+tallerproduccion_show:
+    path:     /{id}/show
+    defaults: { _controller: "scsBundle:TallerProduccion:show" }
+    methods:  GET
+
+tallerproduccion_new:
+    path:     /new
+    defaults: { _controller: "scsBundle:TallerProduccion:new" }
+    methods:  [GET, POST]
+
+tallerproduccion_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "scsBundle:TallerProduccion:edit" }
+    methods:  [GET, POST]
+
+tallerproduccion_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "scsBundle:TallerProduccion:delete" }
+
+
+tallerproduccion_graficar:
+    path:     /graficar
+    defaults: { _controller: "scsBundle:TallerProduccion:graficar" }
+    methods:  GET
+
+tallerproduccion_graficar_post:
+    path:     /graficar
+    defaults: { _controller: "scsBundle:TallerProduccion:graficarPOST" }
+    methods:  POST

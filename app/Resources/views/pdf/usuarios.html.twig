@@ -1,0 +1,26 @@
+{% extends 'pdf/layout-pdf.html.twig' %}
+{% block title %}<h4>Informe de usuarios</h4>{% endblock %}
+    {% block content %}
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Nombre y apellidos</th>
+                <th>Correo</th>
+                <th>Nombre de usuario</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for usuario in usuarios %}
+                <tr>
+                    <td>{{ usuario.nombre }} {{ usuario.apellidos }}</td>
+                    <td>{{ usuario.correo }}</td>
+                    <td>{{ usuario.usuario }}</td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="3" class="text-center text-danger">No hay usuarios para mostrar</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {%endblock %}

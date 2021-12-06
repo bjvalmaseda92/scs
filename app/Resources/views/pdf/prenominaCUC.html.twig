@@ -1,0 +1,23 @@
+{% extends 'pdf/layout-pdf.html.twig' %}
+{% block title %}<h4>Prenómina CUC del {{ prenomina.taller }} {{ prenomina.mes__toString }} {{ prenomina.anno }}</h4>{% endblock %}
+    {% block content %}
+        <table class="table table-striped prenomina">
+            <thead>
+            <thead>
+            <th>Trabajador</th>
+            <th>Total en CUP</th>
+            <th>Coeficiente en CUC</th>
+            <th>Total a cobrar</th>
+            </thead>
+            <tbody>
+            {% for trabajador in prenomina.prenominaTrabajador %}
+                <tr>
+                    <td>{{ trabajador.trabajadores}}</td>
+                    <td>{{ trabajador.totalcobrarcup | number_format(2,'.')}}</td>
+                    <td>{{ prenomina.cuc | number_format(7,'.')}}</td>
+                    <td>{{ trabajador.totalcobrarcuc | number_format(2,'.')}}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {%endblock %}

@@ -1,0 +1,160 @@
+{% extends 'layout.html.twig' %}
+{% block title %}Nuevo trabajador - Sistema de Certificación de Salarios{% endblock %}
+{% block css %}
+    <link href="{{ asset('bundles/scs/plugins/nuewtypehead/typeahead.css') }}" rel="stylesheet" >
+{% endblock %}
+{% block trabajador %}
+    <li class="active">
+        <a href="{{ path('trabajador_index') }}"> <i class="fa  fa-users"></i> Trabajadores</a>
+        <ul class="nav">
+            <li class="active"><a href="{{ path('trabajador_new') }}"><i class="fa fa-plus"></i> Nuevo trabajador</a></li>
+        </ul>
+    </li>
+{% endblock%}
+
+ {% block content %}
+     <div class="page-header">
+         <h3 id="glyphicons">Nuevo trabajador</h3>
+     </div>
+     <div class="panel panel-default">
+         <div class="panel-heading">Datos del trabajador</div>
+         <div class="panel-body">
+             <form class="form-horizontal" role="form" method="post" action="{{ path('trabajador_new') }}">
+                 <div class="form-group{% if form_errors(form.nombre)%} has-error{% endif %}">
+                     <label class="col-sm-2 control-label col-lg-2">Nombre:</label>
+                     <div class="col-lg-10">
+                         {{ form_widget(form.nombre, { 'attr': {'class': 'form-control'} }) }}
+                         {% if form_errors(form.nombre) %}
+                             <span class="help-block text-danger">
+                                        {{ form_errors(form.nombre) }}
+                             </span>
+                         {% endif %}
+                     </div>
+                 </div>
+                 <div class="form-group{% if form_errors(form.apellido1)%} has-error{% endif %}">
+                     <label class="col-sm-2 control-label col-lg-2">1º Apellido</label>
+                     <div class="col-lg-10">
+                         {{ form_widget(form.apellido1, { 'attr': {'class': 'form-control'} }) }}
+                         {% if form_errors(form.apellido1) %}
+                             <span class="help-block text-danger">
+                                        {{ form_errors(form.apellido1) }}
+                             </span>
+                         {% endif %}
+                     </div>
+                 </div>
+
+                 <div class="form-group{% if form_errors(form.apellido2)%} has-error{% endif %}">
+                     <label class="col-sm-2 control-label col-lg-2">2º Apellido</label>
+                     <div class="col-lg-10">
+                         {{ form_widget(form.apellido2, { 'attr': {'class': 'form-control'} }) }}
+                         {% if form_errors(form.apellido2) %}
+                             <span class="help-block text-danger">
+                                        {{ form_errors(form.apellido2) }}
+                             </span>
+                         {% endif %}
+                     </div>
+                 </div>
+
+                 <div class="form-group{% if form_errors(form.ci)%} has-error{% endif %}">
+                     <label class="col-sm-2 control-label col-lg-2">Carnet de identidad</label>
+                     <div class="col-lg-10">
+                         {{ form_widget(form.ci, { 'attr': {'class': 'form-control'} }) }}
+                         {% if form_errors(form.ci) %}
+                             <span class="help-block text-danger">
+                                        {{ form_errors(form.ci) }}
+                             </span>
+                         {% endif %}
+                     </div>
+                 </div>
+
+                 <div class="form-group{% if form_errors(form.direccion)%} has-error{% endif %}">
+                     <label class="col-sm-2 control-label col-lg-2">Dirección particular</label>
+                     <div class="col-lg-10">
+                         {{ form_widget(form.direccion, { 'attr': {'class': 'form-control'} }) }}
+                         {% if form_errors(form.direccion) %}
+                             <span class="help-block text-danger">
+                                        {{ form_errors(form.direccion) }}
+                             </span>
+                         {% endif %}
+                     </div>
+                 </div>
+                 <div class="form-group{% if form_errors(form.nombredepartamento)%} has-error{% endif %}">
+                     <label class="col-sm-2 control-label col-lg-2">Departamento</label>
+                     <div class="col-lg-10">
+                         {{ form_widget(form.nombredepartamento, { 'attr': {'class': 'form-control'} }) }}
+                         {% if form_errors(form.departamento) %}
+                             <span class="help-block text-danger">
+                                        {{ form_errors(form.nombredepartamento) }}
+                             </span>
+                         {% endif %}
+                         <span class="help-block">Escriba el nombre del departamento al que pertenece</span>
+                     </div>
+                 </div>
+                 <div class="form-group{% if form_errors(form.categoria)%} has-error{% endif %}">
+                     <label class="col-sm-2 control-label col-lg-2">Categoría ocupacional</label>
+                     <div class="col-lg-10">
+                         {{ form_widget(form.categoria, { 'attr': {'class': 'form-control'} }) }}
+                         {% if form_errors(form.categoria) %}
+                             <span class="help-block text-danger">
+                                        {{ form_errors(form.categoria) }}
+                             </span>
+                         {% endif %}
+                     </div>
+                 </div>
+                 <div class="form-group{% if form_errors(form.escala)%} has-error{% endif %}">
+                     <label class="col-sm-2 control-label col-lg-2">Escala Salarial</label>
+                     <div class="col-lg-10">
+                         {{ form_widget(form.escala, { 'attr': {'class': 'form-control'} }) }}
+                         {% if form_errors(form.escala) %}
+                             <span class="help-block text-danger">
+                                        {{ form_errors(form.escala) }}
+                             </span>
+                         {% endif %}
+                     </div>
+                 </div>
+                     {{ form_row(form._token) }}
+
+                 <div class="form-group">
+                     <div class="col-lg-12 col-md-12">
+                         <button type="submit" class="btn btn-success"><i class="fa fa-check-square"></i> Aceptar</button>
+                         <a href="{{ path('trabajador_index') }}" class="btn btn-danger"><i class="fa fa-ban"></i> Cancelar</a>
+                     </div>
+                 </div>
+             </form>
+
+         </div>
+     </div>
+ {% endblock %}
+{% block js %}
+    <script type="text/javascript" src="{{ asset('bundles/scs/plugins/nuewtypehead/bloodhound.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/scs/plugins/nuewtypehead/typeahead.jquery.js') }}"></script>
+    <script>
+        jQuery(document).ready(function() {
+
+            var departamentos = [{% for departamento in departamentos %}'{{ departamento }}',{% endfor %}];
+            var departamentos = new Bloodhound({
+                datumTokenizer: Bloodhound.tokenizers.whitespace,
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+                // `states` is an array of state names defined in "The Basics"
+                local: departamentos
+            });
+
+
+
+            $('#scs_bundle_trabajador_nombredepartamento').typeahead(null,
+                    {
+                        name: 'departamentos',
+                        source: departamentos,
+                        templates: {
+                            empty: [
+                                '<div class="empty-message">',
+                                'No se encuentra ningún departamento con este nombre',
+                                '</div>'
+                            ].join('\n'),}
+                    });
+
+        });
+
+    </script>
+{% endblock %}
+

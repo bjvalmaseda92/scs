@@ -1,0 +1,106 @@
+{% extends 'layout.html.twig' %}
+{% block title %}Nuevo fondo salario base de cálculo - Sistema de Certificación de Salarios{% endblock %}
+{% block basecalculo %}
+    <li class="active">
+        <a href="{{ path('basecalculo_index') }}"> <i class="fa fa-wrench"></i> Salario base de cálculo</a>
+        <ul class="nav">
+            <li class="active"><a href="{{ path('basecalculo_new') }}"><i class="fa fa-plus"></i> Agregar fondo salario</a></li>
+        </ul>
+    </li>
+
+{% endblock%}
+
+ {% block content %}
+     <div class="page-header">
+         <h3 id="glyphicons">Nuevo fondo de salario base de cálculo</h3>
+     </div>
+     <div class="panel panel-default">
+         <div class="panel-heading">Datos del fondo de salario base de cálculo</div>
+         <div class="panel-body">
+             <form class="form-horizontal" role="form" method="post" action="{{ path('basecalculo_new') }}">
+                 <div class="form-group{% if error %} has-error{% endif %}">
+                     <label class="col-sm-2 control-label col-lg-2">Período:</label>
+                     <div class="form-group col-md-5 col-lg-5">
+                         <label class="col-sm-2 control-label col-lg-2">Mes</label>
+                         <div class="col-lg-10">
+                             {{ form_widget(form.mes, { 'attr': {'class': 'form-control'} }) }}
+                         </div>
+                     </div>
+                     <div class="form-group col-md-5 col-lg-5">
+                         <label class="col-sm-2 control-label col-lg-2">Año</label>
+                         <div class="col-lg-10">
+                             {{ form_widget(form.anno, { 'attr': {'class': 'form-control'} }) }}
+                         </div>
+                     </div>
+                     {% if error %}
+                         <span class="col-md-12 col-lg-12 help-block text-danger">
+                         {{ sms }}
+                     </span>
+                     {% endif %}
+                 </div>
+                 <div class="form-group">
+                     <label class="col-sm-2 control-label col-lg-2"></label>
+                     <div class="form-group col-md-5 col-lg-5">
+                         <label class="col-sm-4 control-label col-lg-4">Fondo de salario</label>
+                         <div class="col-lg-6">
+                             {{ form_widget(form.fondo, { 'attr': {'class': 'form-control money'} }) }}
+                         </div>
+                     </div>
+                     <div class="form-group col-md-5 col-lg-5">
+                         <label class="col-sm-4 control-label col-lg-4">Mestrías</label>
+                         <div class="col-lg-6">
+                             {{ form_widget(form.maestria, { 'attr': {'class': 'form-control money'} }) }}
+                         </div>
+                     </div>
+
+                 </div>
+                 <div class="form-group">
+                     <label class="col-sm-2 control-label col-lg-2"></label>
+                     <div class="form-group col-md-5 col-lg-5">
+                         <label class="col-sm-4 control-label col-lg-4">Pago por rendimiento</label>
+                         <div class="col-lg-6">
+                             {{ form_widget(form.rendimiento, { 'attr': {'class': 'form-control money'} }) }}
+                         </div>
+                     </div>
+                     <div class="form-group col-md-5 col-lg-5">
+                         <label class="col-sm-4 control-label col-lg-4">Otros pagos</label>
+                         <div class="col-lg-6">
+                             {{ form_widget(form.otros, { 'attr': {'class': 'form-control money'} }) }}
+                         </div>
+                     </div>
+
+                 </div>
+                 <div class="form-group">
+                     <label class="col-sm-2 control-label col-lg-2"></label>
+                     <div class="form-group col-md-5  col-lg-5">
+                         <label class="col-sm-2 control-label col-lg-2">Taller:</label>
+                         <div class="col-lg-10">
+                             {{ form_widget(form.taller, { 'attr': {'class': 'form-control'} }) }}
+                         </div>
+                     </div>
+
+                 </div>
+
+
+                 <div class="form-group">
+                     <div class="col-lg-12 col-md-12">
+                         <button type="submit" class="btn btn-success"><i class="fa fa-check-square"></i> Aceptar</button>
+                         <a href="{{ path('tallerproduccion_index') }}" class="btn btn-danger"><i class="fa fa-ban"></i> Cancelar</a>
+                     </div>
+                 </div>
+                 {{ form_row(form._token) }}
+             </form>
+
+         </div>
+     </div>
+ {% endblock %}
+{% block js %}
+    <script type="text/javascript" src="{{ asset('bundles/scs/plugins/moneyformat/money-format.min.js') }}"></script>
+    <script>
+        $('.money').priceFormat({
+            prefix: '',
+            centsSeparator: '.',
+            thousandsSeparator: '',
+        });
+    </script>
+{% endblock  %}
